@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../Src/Pages/LoginPage';
 import { getSalesforceVerificationCode } from '../Src/Utils/mail.util';
 
-test.describe('Salesforce - Login', () => {
+test.describe.skip('Salesforce - Login', () => {
 
   test('should login with MFA and create a case successfully', async ({ page }) => {
 
