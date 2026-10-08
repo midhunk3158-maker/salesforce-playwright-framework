@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, test } from '@playwright/test';
 export class LeadsPage {
     readonly page: Page;
     readonly newLeadButton: Locator;
@@ -20,15 +20,24 @@ export class LeadsPage {
 
     async leadCreation() {
 
-      //  await this.page.goto('https://orgfarm-569efaa45f-dev-ed.develop.lightning.force.com/lightning/o/Lead/list?filterName=__Recent');
-        await this.newLeadButton.click();
-        await this.salutationCombobox.click();
-        await this.newLeadDialog.click();
-        await this.firstNameTextbox.click();
-        await this.firstNameTextbox.fill('Midhun');
-        await this.lastNameTextbox.click();
-        await this.lastNameTextbox.fill('K');
-        await this.companyTextbox.click();
-        await this.companyTextbox.fill('GL');
+        //  await this.page.goto('https://orgfarm-569efaa45f-dev-ed.develop.lightning.force.com/lightning/o/Lead/list?filterName=__Recent');
+
+        await test.step('Open the New Lead form', async () => {
+            await this.newLeadButton.click();
+        });
+
+        await test.step('Enter the lead details', async () => {
+
+            await this.salutationCombobox.click();
+            await this.newLeadDialog.click();
+            await this.firstNameTextbox.click();
+            await this.firstNameTextbox.fill('Midhun');
+            await this.lastNameTextbox.click();
+            await this.lastNameTextbox.fill('K');
+            await this.companyTextbox.click();
+            await this.companyTextbox.fill('GL');
+
+        });
+
     }
 }
