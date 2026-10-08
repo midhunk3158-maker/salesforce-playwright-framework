@@ -28,4 +28,9 @@ export class LoginPage {
     await this.verificationCodeInput.fill(code);
     await this.verifyButton.click();
   }
+
+  async loginViaJWT(instanceUrl: string, sessionId: string) {
+  await this.page.goto(`${instanceUrl}/secur/frontdoor.jsp?sid=${sessionId}`);
+  await this.page.waitForURL('**/lightning/**', { timeout: 30000 });
+}
 }

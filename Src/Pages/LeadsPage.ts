@@ -20,7 +20,7 @@ export class LeadsPage {
 
     async leadCreation() {
 
-        await this.page.goto('https://orgfarm-569efaa45f-dev-ed.develop.lightning.force.com/lightning/o/Lead/list?filterName=__Recent');
+      //  await this.page.goto('https://orgfarm-569efaa45f-dev-ed.develop.lightning.force.com/lightning/o/Lead/list?filterName=__Recent');
         await this.newLeadButton.click();
         await this.salutationCombobox.click();
         await this.newLeadDialog.click();

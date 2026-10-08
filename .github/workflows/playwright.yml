@@ -17,13 +17,16 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Write JWT private key
+      run: |
+        mkdir -p jwt-cert
+        echo "${{ secrets.SF_JWT_PRIVATE_KEY }}" > jwt-cert/server.key
     - name: Run Playwright tests
       env:
         SF_URL: ${{ secrets.SF_URL }}
         SF_USERNAME: ${{ secrets.SF_USERNAME }}
-        SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
-        GMAIL_USER: ${{ secrets.GMAIL_USER }}
-        GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        SF_CONSUMER_KEY: ${{ secrets.SF_CONSUMER_KEY }}
+        SF_JWT_KEY_PATH: ./jwt-cert/server.key
       run: npx playwright test tests/Case.spec.ts
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
