@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect, test } from '@playwright/test';
 
 export class CasePage {
   readonly page: Page;
@@ -18,9 +18,19 @@ export class CasePage {
 
   async createNewCase() {
     // Click the "New" button to open the new case dialog
-    await this.page.getByRole('button', { name: 'New' }).click();
-    await this.page.getByRole('combobox', { name: 'Case Origin' }).click();
-    await this.page.getByText('Phone', { exact: true }).click();
-    await this.saveButton.click();
+
+    await test.step('Open the New Case form', async () => {
+      await this.page.getByRole('button', { name: 'New' }).click();
+    });
+
+    await test.step('Enter the case details', async () => {
+      await this.caseOriginCombobox.click();
+      await this.page.getByText('Phone', { exact: true }).click();
+    });
+
+    await test.step('Save the new case', async () => {
+      await this.saveButton.click();
+    });
+
   }
 }

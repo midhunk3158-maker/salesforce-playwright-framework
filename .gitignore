@@ -153,3 +153,5 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 jwt-cert/server.key
+allure-results/
+allure-report/
