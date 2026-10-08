@@ -152,3 +152,4 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+jwt-cert/server.key
