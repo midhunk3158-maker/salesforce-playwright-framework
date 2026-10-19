@@ -15,7 +15,7 @@ import path from 'path'
 
 // Load the data once, before the tests are generated
 const leads: LeadData[] = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '../Src/TestData/leads.json'), 'utf-8')
+  fs.readFileSync(path.join(__dirname, '../Src/Testdata/leads.json'), 'utf-8')
 );
 
 test.describe('Salesforce - Lead Creation (data-driven)', () => {
