@@ -1,0 +1,5 @@
+[
+  { "id": "LEAD-01", "salutation": "Mr.",  "firstName": "Midhun", "lastName": "Kumar",  "company": "Acme Corp" },
+  { "id": "LEAD-02", "salutation": "Ms.",  "firstName": "Anita",  "lastName": "Nair",   "company": "Globex" },
+  { "id": "LEAD-03", "salutation": "Dr.",  "firstName": "Rahul",  "lastName": "Menon",  "company": "Initech" }
+]
