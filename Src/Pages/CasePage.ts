@@ -1,24 +1,29 @@
 import { Page, Locator, expect, test } from '@playwright/test';
+import { CaseData } from '../Types/case.type';
 
 export class CasePage {
   readonly page: Page;
   readonly caseOriginCombobox: Locator;
   readonly newCaseDialog: Locator;
   readonly saveButton: Locator;
+  readonly subjectTextbox: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.caseOriginCombobox = page.getByRole('combobox', { name: 'Case Origin' });
     this.newCaseDialog = page.getByRole('dialog', { name: 'New Case' });
+    this.subjectTextbox = page.getByRole('textbox', { name: 'Subject' });
     this.saveButton = page.getByRole('button', { name: 'Save', exact: true });
   }
 
 
 
 
-  async createNewCase() {
-    // Click the "New" button to open the new case dialog
+  async createNewCase(instanceUrl: string, uniqueCase:CaseData ) {
 
+    await this.page.goto(`${instanceUrl}/lightning/o/Case/list`);
+    // Click the "New" button to open the new case dialog
+    
     await test.step('Open the New Case form', async () => {
       await this.page.getByRole('button', { name: 'New' }).click();
     });
@@ -26,6 +31,8 @@ export class CasePage {
     await test.step('Enter the case details', async () => {
       await this.caseOriginCombobox.click();
       await this.page.getByText('Phone', { exact: true }).click();
+      await this.subjectTextbox.click();
+      await this.subjectTextbox.fill(uniqueCase.subject);
     });
 
     await test.step('Save the new case', async () => {

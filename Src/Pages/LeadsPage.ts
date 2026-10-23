@@ -24,7 +24,7 @@ export class LeadsPage {
     }
 
 
-
+//LeadData
     async leadCreation(instanceUrl: string, lead: LeadData) {
 
         //  await this.page.goto('https://orgfarm-569efaa45f-dev-ed.develop.lightning.force.com/lightning/o/Lead/list?filterName=__Recent');
