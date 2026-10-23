@@ -13,7 +13,7 @@ import fs from 'fs';
 import path from 'path'
 
 
-// Load the data once, before the tests are generated
+// Load the data once, before the tests are generated 
 const leads: LeadData[] = JSON.parse(
   fs.readFileSync(path.join(__dirname, '../Src/Testdata/leads.json'), 'utf-8')
 );
@@ -32,6 +32,7 @@ test.describe('Salesforce - Lead Creation (data-driven)', () => {
         ...lead,
         lastName: `${lead.lastName}_${Date.now()}`,
       };
+     
 
       // Authenticate
       const { sessionId, instanceUrl } = await test.step(
@@ -49,4 +50,4 @@ test.describe('Salesforce - Lead Creation (data-driven)', () => {
       await leadsPage.leadCreation(instanceUrl, uniqueLead);
     });
   }
-});
+}); 

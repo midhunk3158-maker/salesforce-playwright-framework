@@ -5,4 +5,5 @@ export interface LeadData {
   firstName: string;
   lastName: string;
   company: string;
+  
 }
